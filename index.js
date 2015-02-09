@@ -7,6 +7,9 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket){
+	socket.broadcast.emit('connection', 'Another user has joined the room');
+	console.log('Another user has joined the room');
+  
   socket.on('chat message', function(msg){
     io.emit('chat message', msg);
   });
